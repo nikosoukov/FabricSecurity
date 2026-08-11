@@ -48,10 +48,6 @@ Each post is a self-contained how-to (prerequisites → steps → validation →
 - [Monitor Warehouse Activity with Query Insights and DMVs](Fabric-DW-Security-24-Governance-Monitor-Activity.md) — Track performance and user activity from built-in views.
 - [Govern the Warehouse with Microsoft Purview](Fabric-DW-Security-25-Governance-Purview.md) — Discover, classify, trace lineage, and endorse across your data estate.
 
-## Suggested publishing cadence
-
-Publish in numbered order (01 → 25) so the audience builds understanding foundation-up. **Weekly** is recommended (~6 months); bi-weekly (~12 months) suits a lighter schedule; a five-day sprint per layer suits a launch moment.
-
 ---
 
 *See the [full series index & publishing guide](Fabric-DW-Security-00-Series-Index-and-Publishing-Guide.md) for the complete post list and cadence table.*
