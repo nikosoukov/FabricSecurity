@@ -14,6 +14,17 @@ order: 4
 
 This post shows you how to turn on **workspace outbound access protection (OAP)** for a workspace that hosts a Fabric Warehouse, so the warehouse and **SQL analytics endpoint** can no longer push or pull data to unapproved external endpoints — closing off ingestion-based exfiltration paths.
 
+## Scenario — when to use this
+
+Inbound is locked down, but a compromised credential or a malicious insider could still use the Warehouse to *push* data out — to an attacker-controlled storage account or an unapproved external endpoint. Your security team wants those data-exfiltration paths closed by default.
+
+Reach for this pattern when you need to guarantee the Warehouse and its **SQL analytics endpoint** cannot reach arbitrary external destinations, and you're ready to standardize ingestion on approved, in-tenant sources. Post 5 shows how to keep loading data once this is on.
+
+For more detail on how this option works, see:
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+- [Outbound access protection for Data Warehouse — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/workspace-outbound-access-protection-data-warehouse)
+
 ## What you'll set up
 
 - OAP enabled on the workspace so **all** outbound public access is blocked by default.

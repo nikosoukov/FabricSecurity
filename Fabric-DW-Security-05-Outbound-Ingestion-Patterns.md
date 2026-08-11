@@ -14,6 +14,17 @@ order: 5
 
 With outbound access protection enabled, direct external ingestion into the Warehouse is blocked. This post shows you how to keep loading data using **OneLake as the supported source**, and explains the current allow-list mechanics and the Data Warehouse limitation you need to design around.
 
+## Scenario — when to use this
+
+You've enabled outbound access protection (Post 4), and now the existing `COPY INTO` jobs that pulled from external Blob / ADLS or third-party endpoints fail by design. You still need to load data on a schedule without weakening that protection.
+
+Reach for this pattern when you must keep ingesting into a **protected Warehouse**: stage external data into **OneLake** first, then load from OneLake — the supported source under OAP — while broader Warehouse allow-listing continues to mature.
+
+For more detail on how this option works, see:
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+- [Outbound access protection for Data Warehouse — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/workspace-outbound-access-protection-data-warehouse)
+
 ## What you'll set up
 
 - A working ingestion path into a protected Warehouse via **OneLake-sourced** `COPY INTO`.

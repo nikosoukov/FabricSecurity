@@ -14,6 +14,25 @@ order: 1
 
 This post walks you through routing every inbound connection to a Fabric Warehouse's **SQL analytics endpoint** through **Azure Private Link**, then denying public internet access to the workspace. After this, SSMS, drivers, and Power BI reach the warehouse only from inside your virtual network.
 
+## How to read this series
+
+This is the first of five posts on securing the Fabric Data Warehouse network boundary — inbound first, then outbound. Every entry is written as a **prescriptive, step-by-step runbook**, not a conceptual overview: you get the exact prerequisites, the portal and template actions, the T-SQL or PowerShell where it applies, a validation step to prove the control works, the current limitations, and a rollback. The intent is that you can implement each control end-to-end without leaving the article.
+
+The *why* behind each control — threat model, architecture, and design trade-offs — is kept deliberately short so the steps stay front and centre. For that deeper technical rationale, use the **Microsoft Fabric security white paper** as the companion reference to the whole series; each post also links the specific product documentation for the feature it configures in its **References** section.
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+
+## Scenario — when to use this
+
+You operate a Fabric Warehouse that holds regulated data — finance, HR, or PII — and your security team has mandated that no data-plane endpoint may be reachable from the public internet. Analysts and services connect from a corporate network already peered to Azure (via VNet, ExpressRoute, or VPN), and auditors expect proof that the Warehouse **SQL analytics endpoint** answers only from inside your virtual network.
+
+Reach for this pattern when *"no public endpoints"* is a hard compliance requirement and you have an Azure VNet that user and service traffic already flows through. If you only need to restrict access to a known set of corporate IPs without standing up private networking, the lighter-weight IP firewall in Post 2 may be the better fit.
+
+For more detail on how this option works, see:
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+- [Workspace-level private links overview — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/security-workspace-level-private-links-overview)
+
 ## What you'll set up
 
 - A **workspace-level private link** that terminates in your Azure VNet.

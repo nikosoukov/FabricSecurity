@@ -14,6 +14,17 @@ order: 2
 
 When you keep the workspace on public endpoints, this post shows you how to fence the Warehouse behind an **IP allow-list**, so only connections from approved public addresses or ranges reach the **SQL analytics endpoint**. It is the lower-effort alternative to private links when full network isolation isn't required.
 
+## Scenario — when to use this
+
+You want to reduce the Warehouse's exposure quickly, but a full private-link rollout isn't justified — you don't have, or don't want to route every consumer through, a virtual network. Your users and service accounts egress through a known, stable set of corporate NAT / proxy addresses or branch-office ranges.
+
+Reach for this pattern when you need a fast, low-effort perimeter: keep the public endpoint but accept connections to the **SQL analytics endpoint** only from a curated IP allow-list, and deny everything else at the workspace boundary. When full network isolation is required instead, use workspace-level private links (Post 1).
+
+For more detail on how this option works, see:
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+- [Workspace-level firewall overview — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/security-workspace-level-firewall-overview)
+
 ## What you'll set up
 
 - An inbound **IP firewall** on the workspace with named allow-list rules (single IP, range, or CIDR).

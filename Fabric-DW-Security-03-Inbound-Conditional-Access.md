@@ -14,6 +14,17 @@ order: 3
 
 This post shows you how to enforce **Microsoft Entra Conditional Access** on connections to a Fabric Warehouse, so every sign-in — including SQL client and tooling access to the **SQL analytics endpoint** — must satisfy MFA, device-compliance, and location conditions before access is granted.
 
+## Scenario — when to use this
+
+Network controls tell you *where* a connection originates, but not *who* is behind it or how healthy their device is. Your identity and compliance teams require that anyone reaching the Warehouse — including SQL client tools hitting the **SQL analytics endpoint** — passes MFA, connects from a managed or compliant device, or comes from a trusted location.
+
+Reach for this pattern when access decisions must be identity- and device-aware, layered on top of your network perimeter rather than replacing it. It pairs naturally with private links (Post 1) or the IP firewall (Post 2).
+
+For more detail on how this option works, see:
+
+- [Microsoft Fabric security white paper — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/white-paper-landing-page)
+- [Conditional Access in Fabric — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/security-conditional-access)
+
 ## What you'll set up
 
 - One Conditional Access policy that covers Fabric **and** the downstream data services the Warehouse depends on.
