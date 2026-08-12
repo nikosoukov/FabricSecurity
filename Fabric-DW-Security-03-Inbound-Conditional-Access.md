@@ -58,6 +58,29 @@ For more detail on how this option works, see:
 - Sign in from a **compliant device** after MFA — access is granted and the Warehouse connects.
 - Use the Entra **sign-in logs** and the Conditional Access **What If** tool to confirm which policy applied.
 
+### Confirm the connection in SQL audit logs
+
+Entra sign-in logs prove the policy fired. To close the loop at the data layer — and show that the session which reached the Warehouse is the one the policy allowed — read the SQL audit log and check the principal and client IP that actually connected.
+
+1. Make sure SQL audit logs are enabled on the warehouse (full setup in Post 21).
+2. Connect to the Warehouse and run the query below to list recent successful logins with their source IP.
+3. Confirm each connection maps to an expected user and an approved network location — and that attempts you blocked during the test above do **not** appear as successful sessions.
+
+```sql
+SELECT event_time,
+       succeeded,
+       server_principal_name,
+       client_ip,
+       application_name
+FROM sys.fn_get_audit_file_v2(
+        '<audit-log-path>', DEFAULT, DEFAULT,
+        DATEADD(HOUR, -24, SYSUTCDATETIME()), SYSUTCDATETIME())
+WHERE action_id = 'LGIS'   -- successful login
+ORDER BY event_time DESC;
+```
+
+> **Nice to have** — This is an observability add-on, not a requirement for Conditional Access to work. Post 21 covers audit log configuration, retention, and forensic analysis in full.
+
 ## Limitations & gotchas
 
 - Use **one common policy** across the five resources. If you already have a Power BI policy, add these resources to it rather than creating a competing policy.
@@ -74,3 +97,4 @@ For more detail on how this option works, see:
 
 - [Conditional Access in Fabric — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/security-conditional-access)
 - [Protect inbound traffic to Microsoft Fabric — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/security/protect-inbound-traffic)
+- [Configure SQL audit logs in Fabric Data Warehouse — Microsoft Learn](https://learn.microsoft.com/en-us/fabric/data-warehouse/configure-sql-audit-logs)

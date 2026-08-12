@@ -76,3 +76,18 @@ Files are named `Fabric-DW-Security-NN-…​.docx` where `NN` runs 01–25, so 
 | 24 | **Monitor Warehouse Activity with Query Insights and DMVs** | queryinsights views + dynamic management views |
 | 25 | **Govern the Warehouse with Microsoft Purview** | Unified Catalog, lineage, endorsement |
 
+## Suggested publishing cadence
+
+Publish in numbered order so the audience builds understanding foundation-up. **Weekly is the recommended cadence** — one post per week keeps the series visible for about six months. A **bi-weekly** cadence (~12 months) suits a lighter schedule; a five-day **sprint per layer** suits a launch or event moment.
+
+| Layer | Posts | Suggested window | Publishing hook |
+| --- | --- | --- | --- |
+| L1 · Network security | 01–05 | Weeks 1–5 | “Lock down the front door” — start with the foundation |
+| L2 · Identity & access | 06–10 | Weeks 6–10 | “Who gets in, and as what” |
+| L3 · Granular data access | 11–15 | Weeks 11–15 | “What they can see once inside” |
+| L4 · Data protection | 16–20 | Weeks 16–20 | “Protecting the data itself” |
+| L5 · Governance & monitoring | 21–25 | Weeks 21–25 | “Prove it, and watch it” |
+
+- Open each layer with a 2–3 sentence framing (why this layer matters) and close each post with a pointer to the next.
+- Consider a short **kickoff/overview** post to launch the series (this five-layer map is its backbone) and a **wrap-up recap** at the end.
+- The numbering leaves room for interstitials — insert a “layer recap” between batches without renumbering the core 25.

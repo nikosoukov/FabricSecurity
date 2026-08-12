@@ -13,7 +13,7 @@ Each post is a self-contained how-to (prerequisites → steps → validation →
 - [Lock the Warehouse SQL Endpoint Behind Workspace-Level Private Links](Fabric-DW-Security-01-Inbound-Private-Links.md) — Route inbound Warehouse connections over Azure Private Link and shut off the public internet.
 - [Restrict the Warehouse to Approved IPs with Workspace Firewall Rules](Fabric-DW-Security-02-Inbound-IP-Firewall.md) — Permit inbound Warehouse connections only from your corporate egress and branch ranges.
 - [Gate Warehouse Sign-ins with Microsoft Entra Conditional Access](Fabric-DW-Security-03-Inbound-Conditional-Access.md) — Require MFA, compliant devices, and trusted locations before any Warehouse connection.
-- [Stop Warehouse Data Exfiltration with Outbound Access Protection](Fabric-DW-Security-04-Outbound-Access-Protection.md) — Block the Warehouse and SQL analytics endpoint from reaching unapproved external destinations.
+- [Stop Warehouse Data Exfiltration with Outbound Access Protection](Fabric-DW-Security-04-Outbound-Access-Protection.md) — Block the Warehouse and SQL analytics endpoint by default, then allow only approved destinations.
 - [Load Data into a Protected Warehouse with the OneLake Ingestion Pattern](Fabric-DW-Security-05-Outbound-Ingestion-Patterns.md) — Keep ingesting after outbound access protection is on — using OneLake as the supported source.
 
 ### Layer 2 — Identity & access
@@ -47,6 +47,10 @@ Each post is a self-contained how-to (prerequisites → steps → validation →
 - [Control Microsoft Access with Customer Lockbox](Fabric-DW-Security-23-Governance-Customer-Lockbox.md) — Require explicit approval before Microsoft engineers can access your data.
 - [Monitor Warehouse Activity with Query Insights and DMVs](Fabric-DW-Security-24-Governance-Monitor-Activity.md) — Track performance and user activity from built-in views.
 - [Govern the Warehouse with Microsoft Purview](Fabric-DW-Security-25-Governance-Purview.md) — Discover, classify, trace lineage, and endorse across your data estate.
+
+## Suggested publishing cadence
+
+Publish in numbered order (01 → 25) so the audience builds understanding foundation-up. **Weekly** is recommended (~6 months); bi-weekly (~12 months) suits a lighter schedule; a five-day sprint per layer suits a launch moment.
 
 ---
 
