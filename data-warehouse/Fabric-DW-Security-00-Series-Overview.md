@@ -1,30 +1,33 @@
 ---
-title: "Security for Fabric Data Warehouse — Series Index & Publishing Guide"
-description: "All 25 how-to posts across five layers, with a suggested publishing cadence."
+title: "Security for Fabric Data Warehouse — Series Overview"
+description: "A prescriptive, 25-part how-to series across five security layers, built from the network up."
 series: "Security for Fabric Data Warehouse"
 layer: "Index"
 order: 0
 ---
 
-# Security for Fabric Data Warehouse — Series Index & Publishing Guide
+# Security for Fabric Data Warehouse — Series Overview
 
-> All 25 how-to posts across five layers, with a suggested publishing cadence.
+> A prescriptive, 25-part how-to series across five security layers, built from the network up.
 
-*Fabric Data Warehouse Technical Insiders · 25-post blog series · Level 300 · Companion index*
+*Fabric Data Warehouse Technical Insiders · 25-part how-to series · Level 300 · Start here*
 
-This is the companion index for the **Security for Fabric Data Warehouse** blog series — 25 prescriptive, how-to posts organized into five layers, built from the network up. Each post is a self-contained deliverable (prerequisites → numbered steps → validation → limitations → rollback) with its own architecture diagram, scoped to the Warehouse and SQL analytics endpoint.
+Securing a Fabric Data Warehouse means making decisions at five different layers — and the guidance for each of them lives in a different place. This series pulls all of it into one prescriptive set: **25 how-to entries**, organized into five layers, built from the network up.
 
-Files are named `Fabric-DW-Security-NN-…​.docx` where `NN` runs 01–25, so they sort in publishing order. This index (00) sits at the front of that set.
+Every entry is a self-contained runbook — **prerequisites → numbered steps → validation → limitations → rollback** — with its own architecture diagram, scoped specifically to the **Warehouse** and the **SQL analytics endpoint**. No conceptual detours: just the steps, in the order you perform them.
+
+This overview is the entry point. Use it to find the layer you need, then work through that layer's entries in order.
 
 ![Figure — The five security layers of the series, built from the network up.](images/fabric-dw-security-00.png)
 
 *Figure — The five security layers of the series, built from the network up.*
 
-## How to use the series
+## How to use this series
 
-- **Read (and publish) in order.** The layers build on one another — network access first, then identity, then what data is visible, then how the data itself is protected, then how you govern and watch it.
-- **Each post stands alone.** A reader can land on any single post and act on it without the others, which is what makes the set publishable as a running series.
-- **Every step is grounded in Microsoft Learn** (pages current through mid-2026), scoped to the Warehouse and SQL analytics endpoint.
+- **Work from the bottom up.** The layers build on one another — network access first, then identity, then what data is visible, then how the data itself is protected, then how you govern and watch it.
+- **Each entry stands alone.** Land on any single entry and act on it without reading the others — useful when you need one control in a hurry.
+- **Every step is grounded in Microsoft Learn** (pages current through mid-2026) and scoped to the Warehouse and SQL analytics endpoint.
+- **Validate as you go.** Each entry ends with a validation step so you can prove the control actually works — and a rollback if you need to undo it.
 
 ## Layer 1 — Network security
 
@@ -76,18 +79,13 @@ Files are named `Fabric-DW-Security-NN-…​.docx` where `NN` runs 01–25, so 
 | 24 | **Monitor Warehouse Activity with Query Insights and DMVs** | queryinsights views + dynamic management views |
 | 25 | **Govern the Warehouse with Microsoft Purview** | Unified Catalog, lineage, endorsement |
 
-## Suggested publishing cadence
+## Where to start
 
-Publish in numbered order so the audience builds understanding foundation-up. **Weekly is the recommended cadence** — one post per week keeps the series visible for about six months. A **bi-weekly** cadence (~12 months) suits a lighter schedule; a five-day **sprint per layer** suits a launch or event moment.
+If you're securing a warehouse from scratch, start at **Layer 1** and work up — the network boundary is the control that makes every layer above it meaningful.
 
-| Layer | Posts | Suggested window | Publishing hook |
-| --- | --- | --- | --- |
-| L1 · Network security | 01–05 | Weeks 1–5 | “Lock down the front door” — start with the foundation |
-| L2 · Identity & access | 06–10 | Weeks 6–10 | “Who gets in, and as what” |
-| L3 · Granular data access | 11–15 | Weeks 11–15 | “What they can see once inside” |
-| L4 · Data protection | 16–20 | Weeks 16–20 | “Protecting the data itself” |
-| L5 · Governance & monitoring | 21–25 | Weeks 21–25 | “Prove it, and watch it” |
+- **Facing an audit or a compliance mandate?** Start at Layer 1 (network isolation) and Layer 5 (audit and monitoring).
+- **Onboarding a new team onto an existing warehouse?** Start at Layer 2 (identity and access) and Layer 3 (what they can see).
+- **Handling regulated or personal data?** Layer 3 (row, column, and masking controls) and Layer 4 (encryption, labels, DLP) are the priority.
+- **Already locked down and proving it?** Layer 5 covers audit logs, forensic investigation, and Purview governance.
 
-- Open each layer with a 2–3 sentence framing (why this layer matters) and close each post with a pointer to the next.
-- Consider a short **kickoff/overview** post to launch the series (this five-layer map is its backbone) and a **wrap-up recap** at the end.
-- The numbering leaves room for interstitials — insert a “layer recap” between batches without renumbering the core 25.
+> **A note on currency** — Fabric security ships quickly. Every step here reflects the product and documentation as of publication — verify current behavior in your own tenant before standardizing on it, particularly for capabilities that recently reached GA.
